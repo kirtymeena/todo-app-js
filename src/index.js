@@ -95,22 +95,14 @@ import "./style.css"
 
         addNoteBtn.addEventListener('click', addNotes)
 
-
-
         // show options in dots
         const options = document.getElementById("dots-three")
 
        
-
-
-
-
         const allNotes = localStorage.getItem("notes")
         if (JSON.parse(allNotes).length > 0) {
             renderNotes()
         }
-
-
     }
 )()
 
