@@ -189,6 +189,11 @@ aside > section {
   text-align: center;
 }
 
+.msg>button{
+  cursor:pointer;
+  border:2px solid red
+}
+
 .notesContainer {
   border: 1px solid #dfe0e1;
   height: 0%;

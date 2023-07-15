@@ -115,7 +115,7 @@ import "./style.css"
             const title = addTitle.value;
             const text = addText.value
             console.log(text)
-            if(JSON.stringify(localStorage.getItem("notes"))!==null){
+            if (JSON.stringify(localStorage.getItem("notes")) !== null) {
                 notesArr = JSON.parse(localStorage.getItem("notes"))
             }
             if (text.length > 0 || title.length > 0) {
@@ -133,7 +133,7 @@ import "./style.css"
             localStorage.setItem("notes", JSON.stringify(notesArr))
             addTitle.value = "";
             addText.value = "";
-            
+
             console.log()
             if (localStorage.getItem("notes")) {
                 renderNotes()
@@ -206,7 +206,7 @@ import "./style.css"
         const renderTrash = () => {
             trashDiv.innerHTML = "";
             trashNotes.innerHTML = ""
-            msg.innerHTML = '<i>Notes in Trash will be deleted after 24 hour</i>'
+            msg.innerHTML = '<i>Notes in Trash will be deleted after 24 hour</i> <button style="margin-left:2rem;padding:0.5rem;background:none;border:none;outline:none;color:#1e3a8a;cursor:pointer">Clear trash</button>'
             trashDiv.append(msg)
             const trashArr = JSON.parse(localStorage.getItem("trash"));
             trashArr !== null && trashArr.forEach(note => {
@@ -237,10 +237,24 @@ import "./style.css"
             const data = JSON.parse(localStorage.getItem("notes"))
 
             data.forEach(note => {
+                if (note.id === selectedNote) {
 
+                }
             })
         }
 
+
+        msg.addEventListener("click", (e) => {
+            if (e.target.tagName === "BUTTON") {
+                const response = confirm("Are you sure you want to do clear trash?");
+                if (response) {
+                    localStorage.removeItem("trash")
+                    renderTrash();
+                    e.preventDefault()
+                }
+            }
+
+        })
 
         if (JSON.parse(localStorage.getItem("notes") !== null && localStorage.getItem("notes")).length > 0) {
             renderNotes()
