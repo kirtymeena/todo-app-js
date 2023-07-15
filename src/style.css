@@ -192,8 +192,6 @@ aside > section {
 .notesContainer {
   border: 1px solid #dfe0e1;
   height: 0%;
-
-  /* max-height: 10rem; */
   width: 15rem;
   display: flex;
   flex-direction: column;
@@ -202,6 +200,9 @@ aside > section {
   padding-inline: 1rem;
   padding-block:0.5rem;
   border-radius: 8px;
+  cursor:default;
+  user-select: none
+
 }
 .notesContainer:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -224,7 +225,7 @@ aside > section {
 .footer {
   width: 30px;
   height: 30px;
-  cursor: pointer;
+  cursor:default;
 }
 
 

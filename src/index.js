@@ -81,7 +81,7 @@ import "./style.css"
                 colors="primary:black,secondary:black"
                 class="delete"
                 id=${note.id}
-                style="width:25px;height:25px">
+                style="width:25px;height:25px;cursor:pointer">
                 </lord-icon>
                
                 </div>
@@ -115,7 +115,9 @@ import "./style.css"
             const title = addTitle.value;
             const text = addText.value
             console.log(text)
-
+            if(JSON.stringify(localStorage.getItem("notes"))!==null){
+                notesArr = JSON.parse(localStorage.getItem("notes"))
+            }
             if (text.length > 0 || title.length > 0) {
                 notesArr.push({
                     id: new Date().toISOString(),
@@ -131,9 +133,7 @@ import "./style.css"
             localStorage.setItem("notes", JSON.stringify(notesArr))
             addTitle.value = "";
             addText.value = "";
-            // if (e.target.id === "addNote") {
-            //     window.location.reload()
-            // }
+            
             console.log()
             if (localStorage.getItem("notes")) {
                 renderNotes()
@@ -143,6 +143,33 @@ import "./style.css"
 
         addNoteBtn.addEventListener('click', addNotes)
 
+
+
+
+        // select sidenav options
+        sideNav.addEventListener('click', (e) => {
+            const item = document.getElementById(e.target.id);
+
+            if (e.target.id === "Notes") {
+                item.setAttribute("class", "selected__nav");
+                navItemTrash.removeAttribute("class");
+                notes.style.display = "flex";
+                addWrapper.style.display = "flex";
+                trashDiv.style.display = "none";
+                navItemNotes.setAttribute("href", "#Notes")
+            }
+            if (e.target.id === "Trash") {
+                item.setAttribute("class", "selected__nav");
+                navItemNotes.removeAttribute("class");
+                notes.style.display = "none";
+                addWrapper.style.display = "none";
+                trashDiv.style.display = "block";
+                navItemTrash.setAttribute("href", "#Trash");
+
+                renderTrash()
+
+            }
+        })
         // delete logic
         notes.addEventListener("click", (e) => {
             const oldTrash = JSON.parse(localStorage.getItem("trash"))
@@ -175,33 +202,7 @@ import "./style.css"
             }
         })
 
-
-        // select sidenav options
-        sideNav.addEventListener('click', (e) => {
-            const item = document.getElementById(e.target.id);
-
-            if (e.target.id === "Notes") {
-                item.setAttribute("class", "selected__nav");
-                navItemTrash.removeAttribute("class");
-                notes.style.display = "flex";
-                addWrapper.style.display = "flex";
-                trashDiv.style.display = "none";
-                navItemNotes.setAttribute("href", "#Notes")
-            }
-            if (e.target.id === "Trash") {
-                item.setAttribute("class", "selected__nav");
-                navItemNotes.removeAttribute("class");
-                notes.style.display = "none";
-                addWrapper.style.display = "none";
-                trashDiv.style.display = "block";
-                navItemTrash.setAttribute("href", "#Trash");
-
-                renderTrash()
-
-            }
-        })
-
-
+        // display deleted notes
         const renderTrash = () => {
             trashDiv.innerHTML = "";
             trashNotes.innerHTML = ""
