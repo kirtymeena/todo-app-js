@@ -107,7 +107,7 @@ aside > section {
   background-color: rgb(230, 230, 230);
 }
 
-#Notes.selected__nav:hover, 
+#Notes.selected__nav:hover,
 #Trash.selected__nav:hover {
   background-color: #feefc3;
 }
@@ -162,6 +162,10 @@ aside > section {
   border-radius: 8px;
   font-size: 17;
 }
+
+#addNote:hover {
+  background-color: #ffe8a2;
+}
 .notes {
   display: flex;
   flex-wrap: wrap;
@@ -189,9 +193,9 @@ aside > section {
   text-align: center;
 }
 
-.msg>button{
-  cursor:pointer;
-  border:2px solid red
+.msg > button {
+  cursor: pointer;
+  border: 2px solid red;
 }
 
 .notesContainer {
@@ -203,11 +207,10 @@ aside > section {
   justify-content: space-between;
   gap: 1rem;
   padding-inline: 1rem;
-  padding-block:0.5rem;
+  padding-block: 0.5rem;
   border-radius: 8px;
-  cursor:default;
-  user-select: none
-
+  cursor: default;
+  user-select: none;
 }
 .notesContainer:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -223,16 +226,15 @@ aside > section {
   font-size: 17px;
   color: #292524;
   opacity: 0.8;
-  white-space:pre-wrap;
+  white-space: pre-wrap;
   width: 100%;
 }
 
 .footer {
   width: 30px;
   height: 30px;
-  cursor:default;
+  cursor: default;
 }
-
 
 /* .overlay,header, main{
   background-color: #dfe0e1;
@@ -240,5 +242,3 @@ aside > section {
   border:2px solid red;
   
 } */
-
-
