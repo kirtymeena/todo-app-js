@@ -17,7 +17,7 @@ import "./style.css"
         const trashDiv = document.querySelector(".trash");
         const msg = document.querySelector(".msg");
         const trashNotes = document.querySelector(".trash__notes");
-        let selectedNote = ''
+        let selectedNoteId = ''
 
         let notesArr = [];
         let trash = [];
@@ -115,7 +115,7 @@ import "./style.css"
             const title = addTitle.value;
             const text = addText.value
             console.log(text)
-            if (JSON.stringify(localStorage.getItem("notes")) !== null) {
+            if (localStorage.getItem("notes") !== null) {
                 notesArr = JSON.parse(localStorage.getItem("notes"))
             }
             if (text.length > 0 || title.length > 0) {
@@ -171,18 +171,36 @@ import "./style.css"
             }
         })
         // delete logic
+
         notes.addEventListener("click", (e) => {
             const oldTrash = JSON.parse(localStorage.getItem("trash"))
             if (oldTrash !== null && oldTrash.length > 0) {
                 trash = oldTrash
             }
+            console.log(e.target)
             if (e.target.tagName === "P") {
-                selectedNote = e.target.parentElement.id
+                if (e.target.className === "title") {
+                    selectedNoteId = e.target.parentElement.id
+                }
+                else {
+                    selectedNoteId = e.target.parentElement.parentElement.id
+                }
+
             }
-            if (e.target.className === "notesContainer") {
-                selectedNote = e.target.id
+            else if (e.target.className === "notesContainer") {
+                selectedNoteId = e.target.id
             }
 
+            else if (e.target.tagName === "DIV") {
+                selectedNoteId = e.target.parentElement.id
+
+            }
+            else {
+                selectedNoteId = e.target.id
+            }
+            if (selectedNoteId) {
+                viewNote()
+            }
             if (e.target.className === "delete") {
                 const getNotes = localStorage.getItem("notes")
                 const data = JSON.parse(getNotes);
@@ -201,6 +219,14 @@ import "./style.css"
 
             }
         })
+
+        const viewNote = () => {
+            const data = JSON.parse(localStorage.getItem("notes"))
+
+            const selectedNote = data.filter(note => note.id === selectedNoteId);
+            console.log(selectedNote)
+        }
+
 
         // display deleted notes
         const renderTrash = () => {
@@ -233,15 +259,7 @@ import "./style.css"
 
 
 
-        const viewNote = () => {
-            const data = JSON.parse(localStorage.getItem("notes"))
 
-            data.forEach(note => {
-                if (note.id === selectedNote) {
-
-                }
-            })
-        }
 
 
         msg.addEventListener("click", (e) => {

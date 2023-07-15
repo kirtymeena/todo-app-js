@@ -223,7 +223,7 @@ aside > section {
   font-size: 17px;
   color: #292524;
   opacity: 0.8;
-  white-space: pre-line;
+  white-space:pre-wrap;
   width: 100%;
 }
 
