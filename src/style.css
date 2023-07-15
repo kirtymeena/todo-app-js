@@ -102,6 +102,15 @@ aside > section {
   text-decoration: none;
   color: #292524;
 }
+#Notes:hover,
+#Trash:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+#Notes.selected__nav:hover, 
+#Trash.selected__nav:hover {
+  background-color: #feefc3;
+}
 
 .add__wrapper {
   border: 2px solid rgb(212, 212, 212);
@@ -173,10 +182,10 @@ aside > section {
   padding-inline: 4rem;
 }
 
-.msg{
+.msg {
   display: block;
-  padding-block:1rem;
-  padding-inline:4rem;
+  padding-block: 1rem;
+  padding-inline: 4rem;
   text-align: center;
 }
 

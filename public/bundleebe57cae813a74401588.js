@@ -32,12 +32,13 @@ body {
 
 header {
   position: fixed;
-  width:100%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
+  padding-inline: 1.5rem;
+  padding-block: 0.5rem;
   border-bottom: 2px solid #dfe0e1;
   background-color: white;
   z-index: 100;
@@ -60,7 +61,7 @@ header {
   padding-inline: 1rem;
   font-size: 1.2rem;
   background-color: #f5f5f5;
-  color:#737373
+  color: #737373;
 }
 
 #search:focus {
@@ -74,7 +75,7 @@ main {
   display: flex;
   flex-direction: row;
   gap: 3rem;
-  padding-top:8rem;
+  padding-top: 6rem;
 }
 
 aside {
@@ -113,6 +114,26 @@ aside > section {
   border-bottom-right-radius: 25px;
   padding: 1rem;
 }
+#Notes,
+#Trash {
+  width: 100%;
+  text-align: center;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding: 1rem;
+  transition: 0.2s background ease-in;
+  text-decoration: none;
+  color: #292524;
+}
+#Notes:hover,
+#Trash:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+#Notes.selected__nav:hover, 
+#Trash.selected__nav:hover {
+  background-color: #feefc3;
+}
 
 .add__wrapper {
   border: 2px solid rgb(212, 212, 212);
@@ -122,7 +143,7 @@ aside > section {
   border-radius: 8px;
   gap: 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  padding:0.5rem;
+  padding: 0.5rem;
 }
 
 #title {
@@ -139,15 +160,17 @@ aside > section {
   resize: none;
   border: none;
   outline: none;
+  padding-inline: 0.5rem;
+  white-space: pre-wrap;
+
   padding-block: 0.5rem;
   overflow: hidden;
   resize: none;
 }
 
-
 .add__note {
   width: 100%;
-  border-top: 1px solid #dfe0e1
+  border-top: 1px solid #dfe0e1;
 }
 #addNote {
   position: relative;
@@ -158,22 +181,42 @@ aside > section {
   border: 2px solid #feefc3;
   outline: none;
   cursor: pointer;
-  margin-top:0.5rem;
+  margin-top: 0.5rem;
   border-radius: 8px;
   font-size: 17;
 }
 .notes {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 2rem;
   padding-inline: 4rem;
   /* justify-content: center; */
 }
+.trash {
+  display: none;
+}
+
+.trash__notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-inline: 4rem;
+}
+
+.msg {
+  display: block;
+  padding-block: 1rem;
+  padding-inline: 4rem;
+  text-align: center;
+}
 
 .notesContainer {
   border: 1px solid #dfe0e1;
-  height: auto;
+  height: 0%;
+
+  /* max-height: 10rem; */
   width: 15rem;
   display: flex;
   flex-direction: column;
@@ -187,23 +230,25 @@ aside > section {
 }
 .title {
   color: #292524;
-  font-size:17px;
-  font-weight:bold;
+  font-size: 17px;
+  font-weight: bold;
   opacity: 0.9;
-  border:2px solid red
 }
 
 .description {
   font-size: 17px;
   color: #292524;
   opacity: 0.8;
+  white-space: pre-line;
+  width: 100%;
 }
 
-.footer{
-  width:30px;
-  height:30px;
-  cursor:pointer
-}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,UAAU;EACV,SAAS;EACT,sBAAsB;AACxB;AACA;EACE,yCAAyC;AAC3C;;AAEA;EACE,eAAe;EACf,UAAU;EACV,aAAa;EACb,mBAAmB;EACnB,8BAA8B;EAC9B,mBAAmB;EACnB,eAAe;EACf,gCAAgC;EAChC,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,yBAAyB;AAC3B;;AAEA;EACE,UAAU;EACV,YAAY;AACd;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,yBAAyB;EACzB,oBAAoB;EACpB,iBAAiB;EACjB,yBAAyB;EACzB;AACF;;AAEA;EACE,2CAA2C;EAC3C,4CAA4C;EAC5C,aAAa;EACb,uBAAuB;AACzB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,SAAS;EACT,gBAAgB;AAClB;;AAEA;EACE,OAAO;EACP,aAAa;EACb,eAAe;EACf,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,SAAS;EACT,mBAAmB;EACnB,mBAAmB;EACnB,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,eAAe;AACjB;;AAEA;EACE,OAAO;EACP,kBAAkB;EAClB,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,SAAS;EACT,mBAAmB;AACrB;;AAEA;EACE,yBAAyB;EACzB,WAAW;EACX,kBAAkB;EAClB,6BAA6B;EAC7B,gCAAgC;EAChC,aAAa;AACf;;AAEA;EACE,oCAAoC;EACpC,UAAU;EACV,aAAa;EACb,sBAAsB;EACtB,kBAAkB;EAClB,SAAS;EACT,2CAA2C;EAC3C,cAAc;AAChB;;AAEA;EACE,cAAc;EACd,eAAe;EACf,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,aAAa;AACf;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,YAAY;EACZ,aAAa;EACb,qBAAqB;EACrB,gBAAgB;EAChB,YAAY;AACd;;;AAGA;EACE,WAAW;EACX;AACF;AACA;EACE,kBAAkB;EAClB,WAAW;EACX,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,yBAAyB;EACzB,aAAa;EACb,eAAe;EACf,iBAAiB;EACjB,kBAAkB;EAClB,aAAa;AACf;AACA;EACE,aAAa;EACb,mBAAmB;EACnB,eAAe;EACf,SAAS;EACT,oBAAoB;EACpB,6BAA6B;AAC/B;;AAEA;EACE,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,8BAA8B;EAC9B,SAAS;EACT,aAAa;EACb,kBAAkB;AACpB;AACA;EACE,2CAA2C;AAC7C;AACA;EACE,cAAc;EACd,cAAc;EACd,gBAAgB;EAChB,YAAY;EACZ;AACF;;AAEA;EACE,eAAe;EACf,cAAc;EACd,YAAY;AACd;;AAEA;EACE,UAAU;EACV,WAAW;EACX;AACF","sourcesContent":["* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\nbody {\r\n  font-family: Arial, Helvetica, sans-serif;\r\n}\r\n\r\nheader {\r\n  position: fixed;\r\n  width:100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding: 1.5rem;\r\n  border-bottom: 2px solid #dfe0e1;\r\n  background-color: white;\r\n  z-index: 100;\r\n}\r\n\r\n.logo {\r\n  color: rgb(119, 119, 119);\r\n}\r\n\r\n.nav__search {\r\n  width: 30%;\r\n  height: 3rem;\r\n}\r\n\r\n#search {\r\n  width: 100%;\r\n  height: 100%;\r\n  border-radius: 8px;\r\n  border: 1px solid #f5f5f5;\r\n  padding-inline: 1rem;\r\n  font-size: 1.2rem;\r\n  background-color: #f5f5f5;\r\n  color:#737373\r\n}\r\n\r\n#search:focus {\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  border: 1px solid rgba(212, 212, 212, 0.941);\r\n  outline: none;\r\n  background-color: white;\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  flex-direction: row;\r\n  gap: 3rem;\r\n  padding-top:8rem;\r\n}\r\n\r\naside {\r\n  flex: 1;\r\n  height: 20rem;\r\n  position: fixed;\r\n  width: 15rem;\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 2rem;\r\n  padding-block: 1rem;\r\n  align-items: center;\r\n  font-size: 18px;\r\n  font-weight: 400;\r\n}\r\naside > section {\r\n  cursor: pointer;\r\n}\r\n\r\n.task__list {\r\n  flex: 4;\r\n  margin-left: 16rem;\r\n  height: 100%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 3rem;\r\n  padding-block: 1rem;\r\n}\r\n\r\n.selected__nav {\r\n  background-color: #feefc3;\r\n  width: 100%;\r\n  text-align: center;\r\n  border-top-right-radius: 25px;\r\n  border-bottom-right-radius: 25px;\r\n  padding: 1rem;\r\n}\r\n\r\n.add__wrapper {\r\n  border: 2px solid rgb(212, 212, 212);\r\n  width: 50%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  border-radius: 8px;\r\n  gap: 1rem;\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  padding:0.5rem;\r\n}\r\n\r\n#title {\r\n  height: 2.2rem;\r\n  font-size: 17px;\r\n  border: none;\r\n  outline: none;\r\n  padding-inline: 0.5rem;\r\n  display: none;\r\n}\r\n\r\n#task__text {\r\n  font-size: 17px;\r\n  resize: none;\r\n  border: none;\r\n  outline: none;\r\n  padding-block: 0.5rem;\r\n  overflow: hidden;\r\n  resize: none;\r\n}\r\n\r\n\r\n.add__note {\r\n  width: 100%;\r\n  border-top: 1px solid #dfe0e1\r\n}\r\n#addNote {\r\n  position: relative;\r\n  float: left;\r\n  width: 6rem;\r\n  padding: 1rem;\r\n  background-color: #feefc3;\r\n  border: 2px solid #feefc3;\r\n  outline: none;\r\n  cursor: pointer;\r\n  margin-top:0.5rem;\r\n  border-radius: 8px;\r\n  font-size: 17;\r\n}\r\n.notes {\r\n  display: flex;\r\n  flex-direction: row;\r\n  flex-wrap: wrap;\r\n  gap: 2rem;\r\n  padding-inline: 4rem;\r\n  /* justify-content: center; */\r\n}\r\n\r\n.notesContainer {\r\n  border: 1px solid #dfe0e1;\r\n  height: auto;\r\n  width: 15rem;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-between;\r\n  gap: 1rem;\r\n  padding: 1rem;\r\n  border-radius: 8px;\r\n}\r\n.notesContainer:hover {\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n}\r\n.title {\r\n  color: #292524;\r\n  font-size:17px;\r\n  font-weight:bold;\r\n  opacity: 0.9;\r\n  border:2px solid red\r\n}\r\n\r\n.description {\r\n  font-size: 17px;\r\n  color: #292524;\r\n  opacity: 0.8;\r\n}\r\n\r\n.footer{\r\n  width:30px;\r\n  height:30px;\r\n  cursor:pointer\r\n}"],"sourceRoot":""}]);
+.footer {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,UAAU;EACV,SAAS;EACT,sBAAsB;AACxB;AACA;EACE,yCAAyC;AAC3C;;AAEA;EACE,eAAe;EACf,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,8BAA8B;EAC9B,mBAAmB;EACnB,sBAAsB;EACtB,qBAAqB;EACrB,gCAAgC;EAChC,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,yBAAyB;AAC3B;;AAEA;EACE,UAAU;EACV,YAAY;AACd;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,yBAAyB;EACzB,oBAAoB;EACpB,iBAAiB;EACjB,yBAAyB;EACzB,cAAc;AAChB;;AAEA;EACE,2CAA2C;EAC3C,4CAA4C;EAC5C,aAAa;EACb,uBAAuB;AACzB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,SAAS;EACT,iBAAiB;AACnB;;AAEA;EACE,OAAO;EACP,aAAa;EACb,eAAe;EACf,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,SAAS;EACT,mBAAmB;EACnB,mBAAmB;EACnB,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,eAAe;AACjB;;AAEA;EACE,OAAO;EACP,kBAAkB;EAClB,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,SAAS;EACT,mBAAmB;AACrB;;AAEA;EACE,yBAAyB;EACzB,WAAW;EACX,kBAAkB;EAClB,6BAA6B;EAC7B,gCAAgC;EAChC,aAAa;AACf;AACA;;EAEE,WAAW;EACX,kBAAkB;EAClB,6BAA6B;EAC7B,gCAAgC;EAChC,aAAa;EACb,mCAAmC;EACnC,qBAAqB;EACrB,cAAc;AAChB;AACA;;EAEE,oCAAoC;AACtC;;AAEA;;EAEE,yBAAyB;AAC3B;;AAEA;EACE,oCAAoC;EACpC,UAAU;EACV,aAAa;EACb,sBAAsB;EACtB,kBAAkB;EAClB,SAAS;EACT,2CAA2C;EAC3C,eAAe;AACjB;;AAEA;EACE,cAAc;EACd,eAAe;EACf,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,aAAa;AACf;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,qBAAqB;;EAErB,qBAAqB;EACrB,gBAAgB;EAChB,YAAY;AACd;;AAEA;EACE,WAAW;EACX,6BAA6B;AAC/B;AACA;EACE,kBAAkB;EAClB,WAAW;EACX,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,yBAAyB;EACzB,aAAa;EACb,eAAe;EACf,kBAAkB;EAClB,kBAAkB;EAClB,aAAa;AACf;AACA;EACE,aAAa;EACb,eAAe;EACf,mBAAmB;EACnB,eAAe;EACf,SAAS;EACT,oBAAoB;EACpB,6BAA6B;AAC/B;AACA;EACE,aAAa;AACf;;AAEA;EACE,aAAa;EACb,eAAe;EACf,SAAS;EACT,oBAAoB;AACtB;;AAEA;EACE,cAAc;EACd,mBAAmB;EACnB,oBAAoB;EACpB,kBAAkB;AACpB;;AAEA;EACE,yBAAyB;EACzB,UAAU;;EAEV,uBAAuB;EACvB,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,8BAA8B;EAC9B,SAAS;EACT,aAAa;EACb,kBAAkB;AACpB;AACA;EACE,2CAA2C;AAC7C;AACA;EACE,cAAc;EACd,eAAe;EACf,iBAAiB;EACjB,YAAY;AACd;;AAEA;EACE,eAAe;EACf,cAAc;EACd,YAAY;EACZ,qBAAqB;EACrB,WAAW;AACb;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,eAAe;AACjB","sourcesContent":["* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\nbody {\r\n  font-family: Arial, Helvetica, sans-serif;\r\n}\r\n\r\nheader {\r\n  position: fixed;\r\n  width: 100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding-inline: 1.5rem;\r\n  padding-block: 0.5rem;\r\n  border-bottom: 2px solid #dfe0e1;\r\n  background-color: white;\r\n  z-index: 100;\r\n}\r\n\r\n.logo {\r\n  color: rgb(119, 119, 119);\r\n}\r\n\r\n.nav__search {\r\n  width: 30%;\r\n  height: 3rem;\r\n}\r\n\r\n#search {\r\n  width: 100%;\r\n  height: 100%;\r\n  border-radius: 8px;\r\n  border: 1px solid #f5f5f5;\r\n  padding-inline: 1rem;\r\n  font-size: 1.2rem;\r\n  background-color: #f5f5f5;\r\n  color: #737373;\r\n}\r\n\r\n#search:focus {\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  border: 1px solid rgba(212, 212, 212, 0.941);\r\n  outline: none;\r\n  background-color: white;\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  flex-direction: row;\r\n  gap: 3rem;\r\n  padding-top: 6rem;\r\n}\r\n\r\naside {\r\n  flex: 1;\r\n  height: 20rem;\r\n  position: fixed;\r\n  width: 15rem;\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 2rem;\r\n  padding-block: 1rem;\r\n  align-items: center;\r\n  font-size: 18px;\r\n  font-weight: 400;\r\n}\r\naside > section {\r\n  cursor: pointer;\r\n}\r\n\r\n.task__list {\r\n  flex: 4;\r\n  margin-left: 16rem;\r\n  height: 100%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 3rem;\r\n  padding-block: 1rem;\r\n}\r\n\r\n.selected__nav {\r\n  background-color: #feefc3;\r\n  width: 100%;\r\n  text-align: center;\r\n  border-top-right-radius: 25px;\r\n  border-bottom-right-radius: 25px;\r\n  padding: 1rem;\r\n}\r\n#Notes,\r\n#Trash {\r\n  width: 100%;\r\n  text-align: center;\r\n  border-top-right-radius: 25px;\r\n  border-bottom-right-radius: 25px;\r\n  padding: 1rem;\r\n  transition: 0.2s background ease-in;\r\n  text-decoration: none;\r\n  color: #292524;\r\n}\r\n#Notes:hover,\r\n#Trash:hover {\r\n  background-color: rgb(230, 230, 230);\r\n}\r\n\r\n#Notes.selected__nav:hover, \r\n#Trash.selected__nav:hover {\r\n  background-color: #feefc3;\r\n}\r\n\r\n.add__wrapper {\r\n  border: 2px solid rgb(212, 212, 212);\r\n  width: 50%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  border-radius: 8px;\r\n  gap: 1rem;\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  padding: 0.5rem;\r\n}\r\n\r\n#title {\r\n  height: 2.2rem;\r\n  font-size: 17px;\r\n  border: none;\r\n  outline: none;\r\n  padding-inline: 0.5rem;\r\n  display: none;\r\n}\r\n\r\n#task__text {\r\n  font-size: 17px;\r\n  resize: none;\r\n  border: none;\r\n  outline: none;\r\n  padding-inline: 0.5rem;\r\n  white-space: pre-wrap;\r\n\r\n  padding-block: 0.5rem;\r\n  overflow: hidden;\r\n  resize: none;\r\n}\r\n\r\n.add__note {\r\n  width: 100%;\r\n  border-top: 1px solid #dfe0e1;\r\n}\r\n#addNote {\r\n  position: relative;\r\n  float: left;\r\n  width: 6rem;\r\n  padding: 1rem;\r\n  background-color: #feefc3;\r\n  border: 2px solid #feefc3;\r\n  outline: none;\r\n  cursor: pointer;\r\n  margin-top: 0.5rem;\r\n  border-radius: 8px;\r\n  font-size: 17;\r\n}\r\n.notes {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  flex-direction: row;\r\n  flex-wrap: wrap;\r\n  gap: 2rem;\r\n  padding-inline: 4rem;\r\n  /* justify-content: center; */\r\n}\r\n.trash {\r\n  display: none;\r\n}\r\n\r\n.trash__notes {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  gap: 2rem;\r\n  padding-inline: 4rem;\r\n}\r\n\r\n.msg {\r\n  display: block;\r\n  padding-block: 1rem;\r\n  padding-inline: 4rem;\r\n  text-align: center;\r\n}\r\n\r\n.notesContainer {\r\n  border: 1px solid #dfe0e1;\r\n  height: 0%;\r\n\r\n  /* max-height: 10rem; */\r\n  width: 15rem;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-between;\r\n  gap: 1rem;\r\n  padding: 1rem;\r\n  border-radius: 8px;\r\n}\r\n.notesContainer:hover {\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n}\r\n.title {\r\n  color: #292524;\r\n  font-size: 17px;\r\n  font-weight: bold;\r\n  opacity: 0.9;\r\n}\r\n\r\n.description {\r\n  font-size: 17px;\r\n  color: #292524;\r\n  opacity: 0.8;\r\n  white-space: pre-line;\r\n  width: 100%;\r\n}\r\n\r\n.footer {\r\n  width: 30px;\r\n  height: 30px;\r\n  cursor: pointer;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -741,7 +786,14 @@ __webpack_require__.r(__webpack_exports__);
   var notes = document.querySelector(".notes");
   var main = document.querySelector('main');
   var addWrapper = document.querySelector(".add__wrapper");
+  var sideNav = document.querySelector("aside");
+  var navItemNotes = document.getElementById("Notes");
+  var navItemTrash = document.getElementById("Trash");
+  var trashDiv = document.querySelector(".trash");
+  var msg = document.querySelector(".msg");
+  var trashNotes = document.querySelector(".trash__notes");
   var notesArr = [];
+  var trash = [];
 
   // auto resize textbox
   addText.addEventListener("keydown", function () {
@@ -768,6 +820,7 @@ __webpack_require__.r(__webpack_exports__);
   var renderNotes = function renderNotes() {
     var getNotes = localStorage.getItem("notes");
     var data = JSON.parse(getNotes);
+    console.log(data);
     notes.innerHTML = "";
     if (notesArr.length === 0 && data.length > 0) {
       notesArr = data;
@@ -776,16 +829,18 @@ __webpack_require__.r(__webpack_exports__);
     data.forEach(function (note) {
       var notesWrapper = document.createElement("div");
       var title = document.createElement("p");
-      var description = document.createElement("p");
+      var description = document.createElement("div");
       var footer = document.createElement("div");
       notesWrapper.classList.add("notesContainer");
       title.classList.add("title");
       footer.classList.add("footer");
       description.classList.add("description");
       title.innerHTML = note.title;
-      description.innerHTML = note.description.length > 200 ? note.description.slice(0, 200) + "..." : note.description;
-      footer.setAttribute("id", "dots");
-      footer.innerHTML = "<lord-icon\n                src=\"https://cdn.lordicon.com/gsqxdxog.json\"\n                trigger=\"hover\"\n                colors=\"primary:black,secondary:black\"\n                style=\"width:30px;height:30px\">\n                </lord-icon>\n                ";
+      console.log(JSON.parse(note.description).length);
+      description.innerHTML = JSON.parse(note.description).length > 300 ? "<p> ".concat(JSON.parse(note.description).slice(0, 300), "... </p>") : "<p>".concat(JSON.parse(note.description), "</p>");
+      footer.innerHTML = "<lord-icon\n                src=\"https://cdn.lordicon.com/gsqxdxog.json\"\n                trigger=\"hover\"\n                colors=\"primary:black,secondary:black\"\n                class=\"delete\"\n                id=".concat(note.id, "\n                style=\"width:30px;height:30px\">\n                </lord-icon>\n                ");
+      footer.setAttribute("id", note.id);
+      notesWrapper.setAttribute('id', note.id);
       notesWrapper.appendChild(title);
       notesWrapper.appendChild(description);
       notesWrapper.appendChild(footer);
@@ -794,35 +849,103 @@ __webpack_require__.r(__webpack_exports__);
   };
 
   // add notes logic
-  var addNotes = function addNotes() {
+  var addNotes = function addNotes(e) {
     var title = addTitle.value;
     var text = addText.value;
-    console.log(text);
+    console.log(JSON.stringify(text));
     notesArr.push({
       id: new Date().toISOString(),
       title: title,
-      description: text
+      description: JSON.stringify(text)
     });
     localStorage.setItem("notes", JSON.stringify(notesArr));
     addTitle.value = "";
     addText.value = "";
+    // if (e.target.id === "addNote") {
+    //     window.location.reload()
+    // }
     if (localStorage.getItem("notes")) {
       renderNotes();
     }
   };
   addNoteBtn.addEventListener('click', addNotes);
 
-  // show options in dots
-  var options = document.getElementById("dots-three");
-  var allNotes = localStorage.getItem("notes");
-  if (JSON.parse(allNotes).length > 0) {
+  // delete logic
+  notes.addEventListener("click", function (e) {
+    var oldTrash = JSON.parse(localStorage.getItem("trash"));
+    if (oldTrash !== null && oldTrash.length > 0) {
+      trash = oldTrash;
+    }
+    if (e.target.className === "delete") {
+      var getNotes = localStorage.getItem("notes");
+      var data = JSON.parse(getNotes);
+      var newData = data.filter(function (note) {
+        if (note.id === e.target.id) {
+          trash.push(note);
+        }
+        if (note.id !== e.target.id) {
+          return note;
+        }
+      });
+      localStorage.setItem("notes", JSON.stringify(newData));
+      localStorage.setItem("trash", JSON.stringify(trash));
+      console.log(trash);
+      renderNotes();
+    }
+  });
+
+  // select sidenav options
+  sideNav.addEventListener('click', function (e) {
+    var item = document.getElementById(e.target.id);
+    if (e.target.id === "Notes") {
+      item.setAttribute("class", "selected__nav");
+      navItemTrash.removeAttribute("class");
+      notes.style.display = "flex";
+      addWrapper.style.display = "flex";
+      trashDiv.style.display = "none";
+      navItemNotes.setAttribute("href", "#Notes");
+    }
+    if (e.target.id === "Trash") {
+      item.setAttribute("class", "selected__nav");
+      navItemNotes.removeAttribute("class");
+      notes.style.display = "none";
+      addWrapper.style.display = "none";
+      trashDiv.style.display = "block";
+      navItemTrash.setAttribute("href", "#Trash");
+      renderTrash();
+    }
+  });
+  var renderTrash = function renderTrash() {
+    trashDiv.innerHTML = "";
+    msg.innerHTML = '<i>Notes in Trash will be deleted after 24 hour</i>';
+    trashDiv.append(msg);
+    var trashArr = JSON.parse(localStorage.getItem("trash"));
+    trashArr !== null && trashArr.forEach(function (note) {
+      var notesWrapper = document.createElement("div");
+      var title = document.createElement("p");
+      var description = document.createElement("div");
+      notesWrapper.classList.add("notesContainer");
+      title.classList.add("title");
+      description.classList.add("description");
+      title.innerHTML = note.title;
+      console.log(JSON.parse(note.description).length);
+      description.innerHTML = JSON.parse(note.description).length > 300 ? "<p> ".concat(JSON.parse(note.description).slice(0, 300), "... </p>") : "<p>".concat(JSON.parse(note.description), "</p>");
+      notesWrapper.setAttribute('id', note.id);
+      notesWrapper.appendChild(title);
+      notesWrapper.appendChild(description);
+      trashNotes.append(notesWrapper);
+      trashDiv.append(trashNotes);
+    });
+  };
+  if (JSON.parse(localStorage.getItem("notes") !== null && localStorage.getItem("notes")).length > 0) {
     renderNotes();
   }
+  if (new Date() < new Date(new Date().getTime() + 24 * 60 * 60 * 1000)) {
+    localStorage.removeItem("trash");
+  }
 })();
-
-// render notes
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlebaa7cd0e9c398ffb774b.js.map
+//# sourceMappingURL=bundleebe57cae813a74401588.js.map

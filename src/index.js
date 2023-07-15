@@ -108,9 +108,9 @@ import "./style.css"
             localStorage.setItem("notes", JSON.stringify(notesArr))
             addTitle.value = "";
             addText.value = "";
-            if (e.target.id === "addNote") {
-                window.location.reload()
-            }
+            // if (e.target.id === "addNote") {
+            //     window.location.reload()
+            // }
             if (localStorage.getItem("notes")) {
                 renderNotes()
             }
