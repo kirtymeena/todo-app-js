@@ -17,6 +17,7 @@ import "./style.css"
         const trashDiv = document.querySelector(".trash");
         const msg = document.querySelector(".msg");
         const trashNotes = document.querySelector(".trash__notes");
+        let selectedNote = ''
 
         let notesArr = [];
         let trash = [];
@@ -69,20 +70,36 @@ import "./style.css"
                 console.log(JSON.parse(note.description).length)
                 description.innerHTML = JSON.parse(note.description).length > 300 ? `<p> ${JSON.parse(note.description).slice(0, 300)}... </p>` : `<p>${JSON.parse(note.description)}</p>`
 
+                footer.style.opacity = "0.7";
+                footer.style.width = "100%";
 
 
-                footer.innerHTML = `<lord-icon
+                footer.innerHTML = `<div>
+                <lord-icon
                 src="https://cdn.lordicon.com/gsqxdxog.json"
                 trigger="hover"
                 colors="primary:black,secondary:black"
                 class="delete"
                 id=${note.id}
-                style="width:30px;height:30px">
+                style="width:25px;height:25px">
                 </lord-icon>
+               
+                </div>
+                <div>${new Date(note.id).toLocaleString("en-US", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                })}</div>
                 `
+                footer.style.display = "flex";
+                footer.style.fontSize = "12px"
+                footer.style.alignItems = "center";
+                footer.style.justifyContent = "space-between";
 
                 footer.setAttribute("id", note.id);
                 notesWrapper.setAttribute('id', note.id)
+
 
                 notesWrapper.appendChild(title)
                 notesWrapper.appendChild(description)
@@ -97,23 +114,31 @@ import "./style.css"
 
             const title = addTitle.value;
             const text = addText.value
-            console.log(JSON.stringify(text))
+            console.log(text)
 
-            notesArr.push({
-                id: new Date().toISOString(),
-                title: title,
-                description: JSON.stringify(text),
+            if (text.length > 0 || title.length > 0) {
+                notesArr.push({
+                    id: new Date().toISOString(),
+                    title: title,
+                    description: JSON.stringify(text),
 
-            })
+                })
+            }
+            else {
+                alert("Can't add empty note");
+                return
+            }
             localStorage.setItem("notes", JSON.stringify(notesArr))
             addTitle.value = "";
             addText.value = "";
             // if (e.target.id === "addNote") {
             //     window.location.reload()
             // }
+            console.log()
             if (localStorage.getItem("notes")) {
                 renderNotes()
             }
+
         }
 
         addNoteBtn.addEventListener('click', addNotes)
@@ -124,6 +149,13 @@ import "./style.css"
             if (oldTrash !== null && oldTrash.length > 0) {
                 trash = oldTrash
             }
+            if (e.target.tagName === "P") {
+                selectedNote = e.target.parentElement.id
+            }
+            if (e.target.className === "notesContainer") {
+                selectedNote = e.target.id
+            }
+
             if (e.target.className === "delete") {
                 const getNotes = localStorage.getItem("notes")
                 const data = JSON.parse(getNotes);
@@ -169,8 +201,10 @@ import "./style.css"
             }
         })
 
+
         const renderTrash = () => {
             trashDiv.innerHTML = "";
+            trashNotes.innerHTML = ""
             msg.innerHTML = '<i>Notes in Trash will be deleted after 24 hour</i>'
             trashDiv.append(msg)
             const trashArr = JSON.parse(localStorage.getItem("trash"));
@@ -198,11 +232,20 @@ import "./style.css"
 
 
 
+        const viewNote = () => {
+            const data = JSON.parse(localStorage.getItem("notes"))
+
+            data.forEach(note => {
+
+            })
+        }
+
+
         if (JSON.parse(localStorage.getItem("notes") !== null && localStorage.getItem("notes")).length > 0) {
             renderNotes()
         }
 
-        if (new Date() < new Date(new Date().getTime() + 24 * 60 * 60 * 1000)){
+        if (new Date() === new Date(new Date().getTime() + 24 * 60 * 60 * 1000)) {
             localStorage.removeItem("trash")
         }
 

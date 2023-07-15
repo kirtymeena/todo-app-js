@@ -199,7 +199,8 @@ aside > section {
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem;
+  padding-inline: 1rem;
+  padding-block:0.5rem;
   border-radius: 8px;
 }
 .notesContainer:hover {
@@ -225,3 +226,13 @@ aside > section {
   height: 30px;
   cursor: pointer;
 }
+
+
+/* .overlay,header, main{
+  background-color: #dfe0e1;
+  opacity: 0.5;
+  border:2px solid red;
+  
+} */
+
+
