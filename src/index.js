@@ -17,7 +17,12 @@ import "./style.css"
         const trashDiv = document.querySelector(".trash");
         const msg = document.querySelector(".msg");
         const trashNotes = document.querySelector(".trash__notes");
-        let selectedNoteId = ''
+        const notedModal = document.querySelector(".notes__modal");
+        const notesContainer = document.querySelector(".notes__container");
+        const overlay = document.querySelector(".overlay");
+        const container = document.querySelector(".container")
+        let selectedNoteId = '';
+        let selectedNote;
 
         let notesArr = [];
         let trash = [];
@@ -46,7 +51,11 @@ import "./style.css"
 
         // render All notes
         const renderNotes = () => {
-            const getNotes = localStorage.getItem("notes")
+            const getNotes = localStorage.getItem("notes");
+            notesContainer.style.display = "none";
+            overlay.style.overflow = "auto";
+            overlay.style.backgroundColor = "white";
+            container.style.opacity = "1"
             const data = JSON.parse(getNotes);
             console.log(data)
             notes.innerHTML = ""
@@ -127,7 +136,7 @@ import "./style.css"
                 })
             }
             else {
-                alert("Can't add empty note");
+                alert("Cannot add empty note");
                 return
             }
             localStorage.setItem("notes", JSON.stringify(notesArr))
@@ -198,35 +207,83 @@ import "./style.css"
             else {
                 selectedNoteId = e.target.id
             }
-            if (selectedNoteId) {
+            if (selectedNoteId && e.target.className !== "delete") {
                 viewNote()
             }
             if (e.target.className === "delete") {
                 const getNotes = localStorage.getItem("notes")
                 const data = JSON.parse(getNotes);
-                const newData = data.filter(note => {
-                    if (note.id === e.target.id) {
-                        trash.push(note)
-                    }
-                    if (note.id !== e.target.id) {
-                        return note
-                    }
-                })
-                localStorage.setItem("notes", JSON.stringify(newData));
-                localStorage.setItem("trash", JSON.stringify(trash))
-                console.log(trash)
-                renderNotes();
+                deleteNote(data, e)
+
 
             }
         })
 
-        const viewNote = () => {
-            const data = JSON.parse(localStorage.getItem("notes"))
-
-            const selectedNote = data.filter(note => note.id === selectedNoteId);
-            console.log(selectedNote)
+        const deleteNote = (data, e) => {
+            let Id;
+            
+            const newData = data.filter(note => {
+                console.log(e)
+                if (e.target !== undefined) {
+                    Id = e.target.id;
+                }
+                else {
+                    Id = e.id
+                }
+                if (note.id === Id) {
+                    console.log("from delete")
+                    trash.push(note)
+                }
+                if (note.id !== Id) {
+                    return note
+                }
+            })
+            localStorage.setItem("notes", JSON.stringify(newData));
+            localStorage.setItem("trash", JSON.stringify(trash))
+            console.log(trash)
+            renderNotes();
         }
 
+        const viewNote = () => {
+            const data = JSON.parse(localStorage.getItem("notes"))
+            const noteTitle = document.querySelector(".note__title");
+            const noteDesc = document.querySelector(".note__description");
+            const noteOption = document.querySelector(".notes__option");
+            const deleteBtn = document.querySelector(".delete")
+
+            selectedNote = data.filter(note => note.id === selectedNoteId);
+            console.log(selectedNote)
+            if (selectedNote) {
+                notesContainer.style.display = "flex";
+                overlay.style.backgroundColor = "#f3f4f6";
+                overlay.style.overflow = "hidden"
+                container.style.opacity = "0.5"
+                noteTitle.innerHTML = `<p>${selectedNote[0].title}</p>`
+                noteDesc.innerHTML = `<p>${JSON.parse(selectedNote[0].description)}</p>`
+                noteOption.setAttribute("id", selectedNote[0].id)
+
+
+            }
+
+        }
+
+        notesContainer.addEventListener("click", (e) => {
+            if (e.target.className === "notes__container") {
+                notesContainer.style.display = "none";
+                overlay.style.overflow = "auto";
+                overlay.style.backgroundColor = "white";
+                container.style.opacity = "1"
+
+
+
+            }
+            if (e.target.className === "delete") {
+                console.log(e.target)
+
+                deleteNote(JSON.parse(localStorage.getItem("notes")), e.target.parentElement.parentElement)
+            }
+
+        })
 
         // display deleted notes
         const renderTrash = () => {
@@ -256,11 +313,6 @@ import "./style.css"
                 trashDiv.append(trashNotes)
             })
         }
-
-
-
-
-
 
         msg.addEventListener("click", (e) => {
             if (e.target.tagName === "BUTTON") {

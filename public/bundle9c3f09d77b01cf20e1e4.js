@@ -130,7 +130,7 @@ aside > section {
   background-color: rgb(230, 230, 230);
 }
 
-#Notes.selected__nav:hover, 
+#Notes.selected__nav:hover,
 #Trash.selected__nav:hover {
   background-color: #feefc3;
 }
@@ -185,6 +185,10 @@ aside > section {
   border-radius: 8px;
   font-size: 17;
 }
+
+#addNote:hover {
+  background-color: #ffe8a2;
+}
 .notes {
   display: flex;
   flex-wrap: wrap;
@@ -212,18 +216,24 @@ aside > section {
   text-align: center;
 }
 
+.msg > button {
+  cursor: pointer;
+  border: 2px solid red;
+}
+
 .notesContainer {
   border: 1px solid #dfe0e1;
   height: 0%;
-
-  /* max-height: 10rem; */
   width: 15rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
   border-radius: 8px;
+  cursor: default;
+  user-select: none;
 }
 .notesContainer:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -239,16 +249,72 @@ aside > section {
   font-size: 17px;
   color: #292524;
   opacity: 0.8;
-  white-space: pre-line;
+  white-space: pre-wrap;
   width: 100%;
 }
 
 .footer {
   width: 30px;
   height: 30px;
-  cursor: pointer;
+  cursor: default;
 }
-`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,UAAU;EACV,SAAS;EACT,sBAAsB;AACxB;AACA;EACE,yCAAyC;AAC3C;;AAEA;EACE,eAAe;EACf,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,8BAA8B;EAC9B,mBAAmB;EACnB,sBAAsB;EACtB,qBAAqB;EACrB,gCAAgC;EAChC,uBAAuB;EACvB,YAAY;AACd;;AAEA;EACE,yBAAyB;AAC3B;;AAEA;EACE,UAAU;EACV,YAAY;AACd;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,yBAAyB;EACzB,oBAAoB;EACpB,iBAAiB;EACjB,yBAAyB;EACzB,cAAc;AAChB;;AAEA;EACE,2CAA2C;EAC3C,4CAA4C;EAC5C,aAAa;EACb,uBAAuB;AACzB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,SAAS;EACT,iBAAiB;AACnB;;AAEA;EACE,OAAO;EACP,aAAa;EACb,eAAe;EACf,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,SAAS;EACT,mBAAmB;EACnB,mBAAmB;EACnB,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,eAAe;AACjB;;AAEA;EACE,OAAO;EACP,kBAAkB;EAClB,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,SAAS;EACT,mBAAmB;AACrB;;AAEA;EACE,yBAAyB;EACzB,WAAW;EACX,kBAAkB;EAClB,6BAA6B;EAC7B,gCAAgC;EAChC,aAAa;AACf;AACA;;EAEE,WAAW;EACX,kBAAkB;EAClB,6BAA6B;EAC7B,gCAAgC;EAChC,aAAa;EACb,mCAAmC;EACnC,qBAAqB;EACrB,cAAc;AAChB;AACA;;EAEE,oCAAoC;AACtC;;AAEA;;EAEE,yBAAyB;AAC3B;;AAEA;EACE,oCAAoC;EACpC,UAAU;EACV,aAAa;EACb,sBAAsB;EACtB,kBAAkB;EAClB,SAAS;EACT,2CAA2C;EAC3C,eAAe;AACjB;;AAEA;EACE,cAAc;EACd,eAAe;EACf,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,aAAa;AACf;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,qBAAqB;;EAErB,qBAAqB;EACrB,gBAAgB;EAChB,YAAY;AACd;;AAEA;EACE,WAAW;EACX,6BAA6B;AAC/B;AACA;EACE,kBAAkB;EAClB,WAAW;EACX,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,yBAAyB;EACzB,aAAa;EACb,eAAe;EACf,kBAAkB;EAClB,kBAAkB;EAClB,aAAa;AACf;AACA;EACE,aAAa;EACb,eAAe;EACf,mBAAmB;EACnB,eAAe;EACf,SAAS;EACT,oBAAoB;EACpB,6BAA6B;AAC/B;AACA;EACE,aAAa;AACf;;AAEA;EACE,aAAa;EACb,eAAe;EACf,SAAS;EACT,oBAAoB;AACtB;;AAEA;EACE,cAAc;EACd,mBAAmB;EACnB,oBAAoB;EACpB,kBAAkB;AACpB;;AAEA;EACE,yBAAyB;EACzB,UAAU;;EAEV,uBAAuB;EACvB,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,8BAA8B;EAC9B,SAAS;EACT,aAAa;EACb,kBAAkB;AACpB;AACA;EACE,2CAA2C;AAC7C;AACA;EACE,cAAc;EACd,eAAe;EACf,iBAAiB;EACjB,YAAY;AACd;;AAEA;EACE,eAAe;EACf,cAAc;EACd,YAAY;EACZ,qBAAqB;EACrB,WAAW;AACb;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,eAAe;AACjB","sourcesContent":["* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\nbody {\r\n  font-family: Arial, Helvetica, sans-serif;\r\n}\r\n\r\nheader {\r\n  position: fixed;\r\n  width: 100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding-inline: 1.5rem;\r\n  padding-block: 0.5rem;\r\n  border-bottom: 2px solid #dfe0e1;\r\n  background-color: white;\r\n  z-index: 100;\r\n}\r\n\r\n.logo {\r\n  color: rgb(119, 119, 119);\r\n}\r\n\r\n.nav__search {\r\n  width: 30%;\r\n  height: 3rem;\r\n}\r\n\r\n#search {\r\n  width: 100%;\r\n  height: 100%;\r\n  border-radius: 8px;\r\n  border: 1px solid #f5f5f5;\r\n  padding-inline: 1rem;\r\n  font-size: 1.2rem;\r\n  background-color: #f5f5f5;\r\n  color: #737373;\r\n}\r\n\r\n#search:focus {\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  border: 1px solid rgba(212, 212, 212, 0.941);\r\n  outline: none;\r\n  background-color: white;\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  flex-direction: row;\r\n  gap: 3rem;\r\n  padding-top: 6rem;\r\n}\r\n\r\naside {\r\n  flex: 1;\r\n  height: 20rem;\r\n  position: fixed;\r\n  width: 15rem;\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 2rem;\r\n  padding-block: 1rem;\r\n  align-items: center;\r\n  font-size: 18px;\r\n  font-weight: 400;\r\n}\r\naside > section {\r\n  cursor: pointer;\r\n}\r\n\r\n.task__list {\r\n  flex: 4;\r\n  margin-left: 16rem;\r\n  height: 100%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 3rem;\r\n  padding-block: 1rem;\r\n}\r\n\r\n.selected__nav {\r\n  background-color: #feefc3;\r\n  width: 100%;\r\n  text-align: center;\r\n  border-top-right-radius: 25px;\r\n  border-bottom-right-radius: 25px;\r\n  padding: 1rem;\r\n}\r\n#Notes,\r\n#Trash {\r\n  width: 100%;\r\n  text-align: center;\r\n  border-top-right-radius: 25px;\r\n  border-bottom-right-radius: 25px;\r\n  padding: 1rem;\r\n  transition: 0.2s background ease-in;\r\n  text-decoration: none;\r\n  color: #292524;\r\n}\r\n#Notes:hover,\r\n#Trash:hover {\r\n  background-color: rgb(230, 230, 230);\r\n}\r\n\r\n#Notes.selected__nav:hover, \r\n#Trash.selected__nav:hover {\r\n  background-color: #feefc3;\r\n}\r\n\r\n.add__wrapper {\r\n  border: 2px solid rgb(212, 212, 212);\r\n  width: 50%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  border-radius: 8px;\r\n  gap: 1rem;\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  padding: 0.5rem;\r\n}\r\n\r\n#title {\r\n  height: 2.2rem;\r\n  font-size: 17px;\r\n  border: none;\r\n  outline: none;\r\n  padding-inline: 0.5rem;\r\n  display: none;\r\n}\r\n\r\n#task__text {\r\n  font-size: 17px;\r\n  resize: none;\r\n  border: none;\r\n  outline: none;\r\n  padding-inline: 0.5rem;\r\n  white-space: pre-wrap;\r\n\r\n  padding-block: 0.5rem;\r\n  overflow: hidden;\r\n  resize: none;\r\n}\r\n\r\n.add__note {\r\n  width: 100%;\r\n  border-top: 1px solid #dfe0e1;\r\n}\r\n#addNote {\r\n  position: relative;\r\n  float: left;\r\n  width: 6rem;\r\n  padding: 1rem;\r\n  background-color: #feefc3;\r\n  border: 2px solid #feefc3;\r\n  outline: none;\r\n  cursor: pointer;\r\n  margin-top: 0.5rem;\r\n  border-radius: 8px;\r\n  font-size: 17;\r\n}\r\n.notes {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  flex-direction: row;\r\n  flex-wrap: wrap;\r\n  gap: 2rem;\r\n  padding-inline: 4rem;\r\n  /* justify-content: center; */\r\n}\r\n.trash {\r\n  display: none;\r\n}\r\n\r\n.trash__notes {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  gap: 2rem;\r\n  padding-inline: 4rem;\r\n}\r\n\r\n.msg {\r\n  display: block;\r\n  padding-block: 1rem;\r\n  padding-inline: 4rem;\r\n  text-align: center;\r\n}\r\n\r\n.notesContainer {\r\n  border: 1px solid #dfe0e1;\r\n  height: 0%;\r\n\r\n  /* max-height: 10rem; */\r\n  width: 15rem;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-between;\r\n  gap: 1rem;\r\n  padding: 1rem;\r\n  border-radius: 8px;\r\n}\r\n.notesContainer:hover {\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n}\r\n.title {\r\n  color: #292524;\r\n  font-size: 17px;\r\n  font-weight: bold;\r\n  opacity: 0.9;\r\n}\r\n\r\n.description {\r\n  font-size: 17px;\r\n  color: #292524;\r\n  opacity: 0.8;\r\n  white-space: pre-line;\r\n  width: 100%;\r\n}\r\n\r\n.footer {\r\n  width: 30px;\r\n  height: 30px;\r\n  cursor: pointer;\r\n}\r\n"],"sourceRoot":""}]);
+
+/* .overlay,header, main{
+  background-color: #dfe0e1;
+  opacity: 0.5;
+  border:2px solid red;
+  
+} */
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  /* border: 2px solid yellow; */
+  height: 100%;
+}
+.notes__container {
+  width: 100%;
+  min-height: 100vh;
+  max-height:100%;
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.notes__modal {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 30rem;
+  height: 30rem;
+  overflow: auto;
+  margin: 0 auto;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  gap: 2rem;
+}
+
+.note__title {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.note__description {
+  font-size: 16px;
+  color: #292524;
+  opacity: 0.8;
+  white-space: pre-wrap;
+  width: 100%;
+}
+
+.notes__option{
+  float:right;
+  bottom:0;
+  /* border:2px solid red; */
+  height:100%;
+}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\nbody {\r\n  font-family: Arial, Helvetica, sans-serif;\r\n}\r\n\r\nheader {\r\n  position: fixed;\r\n  width: 100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding-inline: 1.5rem;\r\n  padding-block: 0.5rem;\r\n  border-bottom: 2px solid #dfe0e1;\r\n  background-color: white;\r\n  z-index: 100;\r\n}\r\n\r\n.logo {\r\n  color: rgb(119, 119, 119);\r\n}\r\n\r\n.nav__search {\r\n  width: 30%;\r\n  height: 3rem;\r\n}\r\n\r\n#search {\r\n  width: 100%;\r\n  height: 100%;\r\n  border-radius: 8px;\r\n  border: 1px solid #f5f5f5;\r\n  padding-inline: 1rem;\r\n  font-size: 1.2rem;\r\n  background-color: #f5f5f5;\r\n  color: #737373;\r\n}\r\n\r\n#search:focus {\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  border: 1px solid rgba(212, 212, 212, 0.941);\r\n  outline: none;\r\n  background-color: white;\r\n}\r\n\r\nmain {\r\n  display: flex;\r\n  flex-direction: row;\r\n  gap: 3rem;\r\n  padding-top: 6rem;\r\n}\r\n\r\naside {\r\n  flex: 1;\r\n  height: 20rem;\r\n  position: fixed;\r\n  width: 15rem;\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 2rem;\r\n  padding-block: 1rem;\r\n  align-items: center;\r\n  font-size: 18px;\r\n  font-weight: 400;\r\n}\r\naside > section {\r\n  cursor: pointer;\r\n}\r\n\r\n.task__list {\r\n  flex: 4;\r\n  margin-left: 16rem;\r\n  height: 100%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 3rem;\r\n  padding-block: 1rem;\r\n}\r\n\r\n.selected__nav {\r\n  background-color: #feefc3;\r\n  width: 100%;\r\n  text-align: center;\r\n  border-top-right-radius: 25px;\r\n  border-bottom-right-radius: 25px;\r\n  padding: 1rem;\r\n}\r\n#Notes,\r\n#Trash {\r\n  width: 100%;\r\n  text-align: center;\r\n  border-top-right-radius: 25px;\r\n  border-bottom-right-radius: 25px;\r\n  padding: 1rem;\r\n  transition: 0.2s background ease-in;\r\n  text-decoration: none;\r\n  color: #292524;\r\n}\r\n#Notes:hover,\r\n#Trash:hover {\r\n  background-color: rgb(230, 230, 230);\r\n}\r\n\r\n#Notes.selected__nav:hover,\r\n#Trash.selected__nav:hover {\r\n  background-color: #feefc3;\r\n}\r\n\r\n.add__wrapper {\r\n  border: 2px solid rgb(212, 212, 212);\r\n  width: 50%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  border-radius: 8px;\r\n  gap: 1rem;\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  padding: 0.5rem;\r\n}\r\n\r\n#title {\r\n  height: 2.2rem;\r\n  font-size: 17px;\r\n  border: none;\r\n  outline: none;\r\n  padding-inline: 0.5rem;\r\n  display: none;\r\n}\r\n\r\n#task__text {\r\n  font-size: 17px;\r\n  resize: none;\r\n  border: none;\r\n  outline: none;\r\n  padding-inline: 0.5rem;\r\n  white-space: pre-wrap;\r\n\r\n  padding-block: 0.5rem;\r\n  overflow: hidden;\r\n  resize: none;\r\n}\r\n\r\n.add__note {\r\n  width: 100%;\r\n  border-top: 1px solid #dfe0e1;\r\n}\r\n#addNote {\r\n  position: relative;\r\n  float: left;\r\n  width: 6rem;\r\n  padding: 1rem;\r\n  background-color: #feefc3;\r\n  border: 2px solid #feefc3;\r\n  outline: none;\r\n  cursor: pointer;\r\n  margin-top: 0.5rem;\r\n  border-radius: 8px;\r\n  font-size: 17;\r\n}\r\n\r\n#addNote:hover {\r\n  background-color: #ffe8a2;\r\n}\r\n.notes {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  flex-direction: row;\r\n  flex-wrap: wrap;\r\n  gap: 2rem;\r\n  padding-inline: 4rem;\r\n  /* justify-content: center; */\r\n}\r\n.trash {\r\n  display: none;\r\n}\r\n\r\n.trash__notes {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  gap: 2rem;\r\n  padding-inline: 4rem;\r\n}\r\n\r\n.msg {\r\n  display: block;\r\n  padding-block: 1rem;\r\n  padding-inline: 4rem;\r\n  text-align: center;\r\n}\r\n\r\n.msg > button {\r\n  cursor: pointer;\r\n  border: 2px solid red;\r\n}\r\n\r\n.notesContainer {\r\n  border: 1px solid #dfe0e1;\r\n  height: 0%;\r\n  width: 15rem;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-between;\r\n  gap: 1rem;\r\n  padding-inline: 1rem;\r\n  padding-block: 0.5rem;\r\n  border-radius: 8px;\r\n  cursor: default;\r\n  user-select: none;\r\n}\r\n.notesContainer:hover {\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n}\r\n.title {\r\n  color: #292524;\r\n  font-size: 17px;\r\n  font-weight: bold;\r\n  opacity: 0.9;\r\n}\r\n\r\n.description {\r\n  font-size: 17px;\r\n  color: #292524;\r\n  opacity: 0.8;\r\n  white-space: pre-wrap;\r\n  width: 100%;\r\n}\r\n\r\n.footer {\r\n  width: 30px;\r\n  height: 30px;\r\n  cursor: default;\r\n}\r\n\r\n/* .overlay,header, main{\r\n  background-color: #dfe0e1;\r\n  opacity: 0.5;\r\n  border:2px solid red;\r\n  \r\n} */\r\n\r\n.overlay {\r\n  position: absolute;\r\n  width: 100%;\r\n  /* border: 2px solid yellow; */\r\n  height: 100%;\r\n}\r\n.notes__container {\r\n  width: 100%;\r\n  min-height: 100vh;\r\n  max-height:100%;\r\n  position: absolute;\r\n  display: none;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n.notes__modal {\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  border-radius: 8px;\r\n  padding: 1rem;\r\n  width: 30rem;\r\n  height: 30rem;\r\n  overflow: auto;\r\n  margin: 0 auto;\r\n  z-index: 1000;\r\n  display: flex;\r\n  flex-direction: column;\r\n  background-color: white;\r\n  gap: 2rem;\r\n}\r\n\r\n.note__title {\r\n  font-size: 17px;\r\n  font-weight: 500;\r\n}\r\n\r\n.note__description {\r\n  font-size: 16px;\r\n  color: #292524;\r\n  opacity: 0.8;\r\n  white-space: pre-wrap;\r\n  width: 100%;\r\n}\r\n\r\n.notes__option{\r\n  float:right;\r\n  bottom:0;\r\n  /* border:2px solid red; */\r\n  height:100%;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -792,6 +858,12 @@ __webpack_require__.r(__webpack_exports__);
   var trashDiv = document.querySelector(".trash");
   var msg = document.querySelector(".msg");
   var trashNotes = document.querySelector(".trash__notes");
+  var notedModal = document.querySelector(".notes__modal");
+  var notesContainer = document.querySelector(".notes__container");
+  var overlay = document.querySelector(".overlay");
+  var container = document.querySelector(".container");
+  var selectedNoteId = '';
+  var selectedNote;
   var notesArr = [];
   var trash = [];
 
@@ -819,6 +891,10 @@ __webpack_require__.r(__webpack_exports__);
   // render All notes
   var renderNotes = function renderNotes() {
     var getNotes = localStorage.getItem("notes");
+    notesContainer.style.display = "none";
+    overlay.style.overflow = "auto";
+    overlay.style.backgroundColor = "white";
+    container.style.opacity = "1";
     var data = JSON.parse(getNotes);
     console.log(data);
     notes.innerHTML = "";
@@ -838,7 +914,18 @@ __webpack_require__.r(__webpack_exports__);
       title.innerHTML = note.title;
       console.log(JSON.parse(note.description).length);
       description.innerHTML = JSON.parse(note.description).length > 300 ? "<p> ".concat(JSON.parse(note.description).slice(0, 300), "... </p>") : "<p>".concat(JSON.parse(note.description), "</p>");
-      footer.innerHTML = "<lord-icon\n                src=\"https://cdn.lordicon.com/gsqxdxog.json\"\n                trigger=\"hover\"\n                colors=\"primary:black,secondary:black\"\n                class=\"delete\"\n                id=".concat(note.id, "\n                style=\"width:30px;height:30px\">\n                </lord-icon>\n                ");
+      footer.style.opacity = "0.7";
+      footer.style.width = "100%";
+      footer.innerHTML = "<div>\n                <lord-icon\n                src=\"https://cdn.lordicon.com/gsqxdxog.json\"\n                trigger=\"hover\"\n                colors=\"primary:black,secondary:black\"\n                class=\"delete\"\n                id=".concat(note.id, "\n                style=\"width:25px;height:25px;cursor:pointer\">\n                </lord-icon>\n               \n                </div>\n                <div>").concat(new Date(note.id).toLocaleString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }), "</div>\n                ");
+      footer.style.display = "flex";
+      footer.style.fontSize = "12px";
+      footer.style.alignItems = "center";
+      footer.style.justifyContent = "space-between";
       footer.setAttribute("id", note.id);
       notesWrapper.setAttribute('id', note.id);
       notesWrapper.appendChild(title);
@@ -852,47 +939,29 @@ __webpack_require__.r(__webpack_exports__);
   var addNotes = function addNotes(e) {
     var title = addTitle.value;
     var text = addText.value;
-    console.log(JSON.stringify(text));
-    notesArr.push({
-      id: new Date().toISOString(),
-      title: title,
-      description: JSON.stringify(text)
-    });
+    console.log(text);
+    if (localStorage.getItem("notes") !== null) {
+      notesArr = JSON.parse(localStorage.getItem("notes"));
+    }
+    if (text.length > 0 || title.length > 0) {
+      notesArr.push({
+        id: new Date().toISOString(),
+        title: title,
+        description: JSON.stringify(text)
+      });
+    } else {
+      alert("Cannot add empty note");
+      return;
+    }
     localStorage.setItem("notes", JSON.stringify(notesArr));
     addTitle.value = "";
     addText.value = "";
-    // if (e.target.id === "addNote") {
-    //     window.location.reload()
-    // }
+    console.log();
     if (localStorage.getItem("notes")) {
       renderNotes();
     }
   };
   addNoteBtn.addEventListener('click', addNotes);
-
-  // delete logic
-  notes.addEventListener("click", function (e) {
-    var oldTrash = JSON.parse(localStorage.getItem("trash"));
-    if (oldTrash !== null && oldTrash.length > 0) {
-      trash = oldTrash;
-    }
-    if (e.target.className === "delete") {
-      var getNotes = localStorage.getItem("notes");
-      var data = JSON.parse(getNotes);
-      var newData = data.filter(function (note) {
-        if (note.id === e.target.id) {
-          trash.push(note);
-        }
-        if (note.id !== e.target.id) {
-          return note;
-        }
-      });
-      localStorage.setItem("notes", JSON.stringify(newData));
-      localStorage.setItem("trash", JSON.stringify(trash));
-      console.log(trash);
-      renderNotes();
-    }
-  });
 
   // select sidenav options
   sideNav.addEventListener('click', function (e) {
@@ -915,9 +984,96 @@ __webpack_require__.r(__webpack_exports__);
       renderTrash();
     }
   });
+  // delete logic
+
+  notes.addEventListener("click", function (e) {
+    var oldTrash = JSON.parse(localStorage.getItem("trash"));
+    if (oldTrash !== null && oldTrash.length > 0) {
+      trash = oldTrash;
+    }
+    console.log(e.target);
+    if (e.target.tagName === "P") {
+      if (e.target.className === "title") {
+        selectedNoteId = e.target.parentElement.id;
+      } else {
+        selectedNoteId = e.target.parentElement.parentElement.id;
+      }
+    } else if (e.target.className === "notesContainer") {
+      selectedNoteId = e.target.id;
+    } else if (e.target.tagName === "DIV") {
+      selectedNoteId = e.target.parentElement.id;
+    } else {
+      selectedNoteId = e.target.id;
+    }
+    if (selectedNoteId && e.target.className !== "delete") {
+      viewNote();
+    }
+    if (e.target.className === "delete") {
+      var getNotes = localStorage.getItem("notes");
+      var data = JSON.parse(getNotes);
+      deleteNote(data, e);
+    }
+  });
+  var deleteNote = function deleteNote(data, e) {
+    var Id;
+    var newData = data.filter(function (note) {
+      console.log(e);
+      if (e.target !== undefined) {
+        Id = e.target.id;
+      } else {
+        Id = e.id;
+      }
+      if (note.id === Id) {
+        console.log("from delete");
+        trash.push(note);
+      }
+      if (note.id !== Id) {
+        return note;
+      }
+    });
+    localStorage.setItem("notes", JSON.stringify(newData));
+    localStorage.setItem("trash", JSON.stringify(trash));
+    console.log(trash);
+    renderNotes();
+  };
+  var viewNote = function viewNote() {
+    var data = JSON.parse(localStorage.getItem("notes"));
+    var noteTitle = document.querySelector(".note__title");
+    var noteDesc = document.querySelector(".note__description");
+    var noteOption = document.querySelector(".notes__option");
+    var deleteBtn = document.querySelector(".delete");
+    selectedNote = data.filter(function (note) {
+      return note.id === selectedNoteId;
+    });
+    console.log(selectedNote);
+    if (selectedNote) {
+      notesContainer.style.display = "flex";
+      overlay.style.backgroundColor = "#f3f4f6";
+      overlay.style.overflow = "hidden";
+      container.style.opacity = "0.5";
+      noteTitle.innerHTML = "<p>".concat(selectedNote[0].title, "</p>");
+      noteDesc.innerHTML = "<p>".concat(JSON.parse(selectedNote[0].description), "</p>");
+      noteOption.setAttribute("id", selectedNote[0].id);
+    }
+  };
+  notesContainer.addEventListener("click", function (e) {
+    if (e.target.className === "notes__container") {
+      notesContainer.style.display = "none";
+      overlay.style.overflow = "auto";
+      overlay.style.backgroundColor = "white";
+      container.style.opacity = "1";
+    }
+    if (e.target.className === "delete") {
+      console.log(e.target);
+      deleteNote(JSON.parse(localStorage.getItem("notes")), e.target.parentElement.parentElement);
+    }
+  });
+
+  // display deleted notes
   var renderTrash = function renderTrash() {
     trashDiv.innerHTML = "";
-    msg.innerHTML = '<i>Notes in Trash will be deleted after 24 hour</i>';
+    trashNotes.innerHTML = "";
+    msg.innerHTML = '<i>Notes in Trash will be deleted after 24 hour</i> <button style="margin-left:2rem;padding:0.5rem;background:none;border:none;outline:none;color:#1e3a8a;cursor:pointer">Clear trash</button>';
     trashDiv.append(msg);
     var trashArr = JSON.parse(localStorage.getItem("trash"));
     trashArr !== null && trashArr.forEach(function (note) {
@@ -937,10 +1093,20 @@ __webpack_require__.r(__webpack_exports__);
       trashDiv.append(trashNotes);
     });
   };
+  msg.addEventListener("click", function (e) {
+    if (e.target.tagName === "BUTTON") {
+      var response = confirm("Are you sure you want to do clear trash?");
+      if (response) {
+        localStorage.removeItem("trash");
+        renderTrash();
+        e.preventDefault();
+      }
+    }
+  });
   if (JSON.parse(localStorage.getItem("notes") !== null && localStorage.getItem("notes")).length > 0) {
     renderNotes();
   }
-  if (new Date() < new Date(new Date().getTime() + 24 * 60 * 60 * 1000)) {
+  if (new Date() === new Date(new Date().getTime() + 24 * 60 * 60 * 1000)) {
     localStorage.removeItem("trash");
   }
 })();
@@ -948,4 +1114,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundleebe57cae813a74401588.js.map
+//# sourceMappingURL=bundle9c3f09d77b01cf20e1e4.js.map
