@@ -23,6 +23,7 @@ import "./style.css"
         const container = document.querySelector(".container");
         const noteTitle = document.querySelector(".note__title");
         const noteDesc = document.querySelector(".note__description");
+        const search = document.querySelector("#search")
         let selectedNoteId = '';
         let selectedNote;
 
@@ -264,20 +265,12 @@ import "./style.css"
 
         }
 
-
-        const editNotes = () => {
-
-        }
-
         notesContainer.addEventListener("click", (e) => {
             if (e.target.className === "notes__container") {
                 notesContainer.style.display = "none";
                 overlay.style.overflow = "auto";
                 overlay.style.backgroundColor = "white";
                 container.style.opacity = "1"
-
-
-
             }
             if (e.target.className === "delete") {
                 console.log(e.target)
@@ -327,6 +320,88 @@ import "./style.css"
             }
 
         })
+        const debounce = (cb, time) => {
+            let timeout;
+
+            if (timeout) {
+                timeout = time
+            }
+            setTimeout(() => {
+                cb()
+            }, timeout)
+        }
+
+
+
+        search.addEventListener("keyup", (e) => {
+            const s = search.value
+            debounce((s) => {
+                const data = JSON.parse(localStorage.getItem("notes"));
+                console.log(data)
+                if (data !== null) {
+                    notes.innerHTML = ""
+                    data.filter(note => {
+                        if (note.title.toLowerCase().startsWith(search.value.toLowerCase()) || note.description.toLowerCase().includes(search.value.toLowerCase())) {
+                            const notesWrapper = document.createElement("div");
+                            const title = document.createElement("p");
+                            const description = document.createElement("div");
+                            const footer = document.createElement("div")
+                            notesWrapper.classList.add("notesContainer");
+                            title.classList.add("title");
+                            footer.classList.add("footer")
+                            description.classList.add("description")
+
+                            title.innerHTML = note.title
+                            console.log(JSON.parse(note.description).length)
+                            description.innerHTML = JSON.parse(note.description).length > 300 ? `<p> ${JSON.parse(note.description).slice(0, 300)}... </p>` : `<p>${JSON.parse(note.description)}</p>`
+
+                            footer.style.opacity = "0.7";
+                            footer.style.width = "100%";
+
+
+                            footer.innerHTML = `<div>
+                <lord-icon
+                src="https://cdn.lordicon.com/gsqxdxog.json"
+                trigger="hover"
+                colors="primary:black,secondary:black"
+                class="delete"
+                id=${note.id}
+                style="width:25px;height:25px;cursor:pointer">
+                </lord-icon>
+               
+                </div>
+                <div>${new Date(note.id).toLocaleString("en-US", {
+                                weekday: "long",
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })}</div>
+                `
+                            footer.style.display = "flex";
+                            footer.style.fontSize = "12px"
+                            footer.style.alignItems = "center";
+                            footer.style.justifyContent = "space-between";
+
+                            footer.setAttribute("id", note.id);
+                            notesWrapper.setAttribute('id', note.id)
+
+
+                            notesWrapper.appendChild(title)
+                            notesWrapper.appendChild(description)
+                            notesWrapper.appendChild(footer)
+                            notes.append(notesWrapper)
+                        }
+                    })
+                }
+            }, 300)
+        })
+
+        // debounce -  delay the search result
+
+
+        // filter
+
+
 
         if (JSON.parse(localStorage.getItem("notes") !== null && localStorage.getItem("notes")).length > 0) {
             renderNotes()
