@@ -20,7 +20,9 @@ import "./style.css"
         const notedModal = document.querySelector(".notes__modal");
         const notesContainer = document.querySelector(".notes__container");
         const overlay = document.querySelector(".overlay");
-        const container = document.querySelector(".container")
+        const container = document.querySelector(".container");
+        const noteTitle = document.querySelector(".note__title");
+        const noteDesc = document.querySelector(".note__description");
         let selectedNoteId = '';
         let selectedNote;
 
@@ -221,7 +223,7 @@ import "./style.css"
 
         const deleteNote = (data, e) => {
             let Id;
-            
+
             const newData = data.filter(note => {
                 console.log(e)
                 if (e.target !== undefined) {
@@ -246,24 +248,24 @@ import "./style.css"
 
         const viewNote = () => {
             const data = JSON.parse(localStorage.getItem("notes"))
-            const noteTitle = document.querySelector(".note__title");
-            const noteDesc = document.querySelector(".note__description");
             const noteOption = document.querySelector(".notes__option");
-            const deleteBtn = document.querySelector(".delete")
 
             selectedNote = data.filter(note => note.id === selectedNoteId);
             console.log(selectedNote)
             if (selectedNote) {
                 notesContainer.style.display = "flex";
-                overlay.style.backgroundColor = "#f3f4f6";
+                overlay.style.backgroundColor = "rgb(254, 254, 254);";
                 overlay.style.overflow = "hidden"
                 container.style.opacity = "0.5"
                 noteTitle.innerHTML = `<p>${selectedNote[0].title}</p>`
                 noteDesc.innerHTML = `<p>${JSON.parse(selectedNote[0].description)}</p>`
                 noteOption.setAttribute("id", selectedNote[0].id)
-
-
             }
+
+        }
+
+
+        const editNotes = () => {
 
         }
 
